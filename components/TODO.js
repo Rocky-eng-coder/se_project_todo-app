@@ -39,7 +39,23 @@ class Todo {
 
     todoNameEl.textContent = this._data.name;
 
+    //TODO - implement dates
+    if (this._data.date) {
+      const dueDate = new Date(this._data.date);
+
+      if (!isNaN(dueDate)) {
+        todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}`;
+      } else {
+        todoDateEl.textContent = "Invalid due date";
+      }
+    }
+
     this._generateCheckboxEl();
+
     this._setEventListeners();
 
     return this._todoElement;
