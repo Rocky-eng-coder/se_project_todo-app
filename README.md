@@ -14,4 +14,6 @@ The technologies used for this project are HTML, CSS, and JavaScript.
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+(https://rocky-eng-coder.github.io/se_project_todo-app/index.html)
+
+
