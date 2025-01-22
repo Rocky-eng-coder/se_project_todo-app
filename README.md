@@ -1,14 +1,14 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+The is a To-do app aimed at giving the user the ability to create tasks with customized due dates. The user is able to delete the tasks as well. 
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+The user is able add, delete, and checkbox all of their tasks. The dates that can be used are within a certain time span. 
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+The technologies used for this project are HTML, CSS, and JavaScript. 
 
 ## Deployment
 
