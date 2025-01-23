@@ -5,17 +5,14 @@ class Todo {
   }
 
   _setEventListeners() {
-    //TODO - set up the delete button handler
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
     });
 
-    // set 'change' listener on checkbox element
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
       console.log(this._data.completed);
     });
-    // when clicked, change completion from true to false, or vice versa
   }
 
   _generateCheckboxEl() {
@@ -39,7 +36,6 @@ class Todo {
 
     todoNameEl.textContent = this._data.name;
 
-    //TODO - implement dates
     if (this._data.date) {
       const dueDate = new Date(this._data.date);
 
