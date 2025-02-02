@@ -17,8 +17,21 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {},
+  handleFormSubmit: (inputvalues) => {
+    // TODO - MOVE CODE FROM existing submission handler to here, code is below uncommented
+    // const name = evt.target.name.value;
+    //const dateInput = evt.target.date.value;
+    //const date = new Date(dateInput);
+    //date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    //const id = uuidv4();
+    //const values = { name, date, id };
+    //const todo = generateTodo(values);
+    //todosList.append(todo); // use addItem method instead
+    //addTodoPopup.close();
+    //});
+  },
 });
+addTodoPopup.setEventListeners();
 
 const section = new Section({
   items: [], // pass initial todos-8
@@ -46,30 +59,27 @@ addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
 
-addTodoCloseBtn.addEventListener("click", () => {
-  closeModal(addTodoPopupEl);
-});
+//addTodoForm.addEventListener("submit", (evt) => {
+//evt.preventDefault();
+// const name = evt.target.name.value;
+//const dateInput = evt.target.date.value;
 
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
+//const date = new Date(dateInput);
+//date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-  const date = new Date(dateInput);
-  date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+//const id = uuidv4();
+//const values = { name, date, id };
+//const todo = generateTodo(values);
 
-  const id = uuidv4();
-  const values = { name, date, id };
-  const todo = generateTodo(values);
+//todosList.append(todo); // use addItem method instead
 
-  todosList.append(todo); // use addItem method instead
-  closeModal(addTodoPopupEl);
-});
+//addTodoPopup.close();
+//});
 
 // initialTodos.forEach((item) => {
 // const todo = generateTodo(item);
 // todosList.append(todo); Use addItem method from section.js
-// });
+// }); from here to line 50 is old code from previous sprint
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
