@@ -6,31 +6,29 @@ class Popup {
 
   _handleEscapeClose(evt) {
     if (evt.key === "Escape") {
-      // - call the close method
+      this.close();
     }
   }
 
   open() {
     this._popupElement.classList.add("popup_visible");
-    document.addEventListener("keyup", this._handleEscapeClose);
+    document.addEventListener("keyup", this._handleEscapeClose.bind(this));
   }
 
   close() {
     this._popupElement.classList.remove("popup_visible");
     console.log("close method called");
-    // TODO - remove the escape Listener
+    document.removeEventListener("keyup", this._handleEscapeClose.bind(this));
   }
 
   setEventListeners() {
-    // this._popupCloseBtn.addEventListener("click", () => {
-    //this.close(); - Old code from previous sprint
-    //});
-
-    // This one listener will handle close button and modal listener
     this._popupElement.addEventListener("mousedown", (evt) => {
-      // if the event target's classList contains "popup__close" or "popup"
-      // then close the modal
-      // Use if (x || y) for conditions{
+      if (
+        evt.target === this._popupCloseBtn ||
+        evt.target === this._popupElement
+      ) {
+        this.close();
+      }
     });
   }
 }

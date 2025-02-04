@@ -4,11 +4,12 @@ class Todo {
     this._templateElement = document.querySelector(selector);
     this._handleCheck = handleCheck;
     this._handleDelete = handleDelete;
+    this._completed = this._data.completed;
   }
 
   _setEventListeners() {
-    this._deleteBtnEl.addEventListener("click", () => {
-      this._handleDelete(this._completed);
+    this._todoDeleteBtn.addEventListener("click", () => {
+      this._handleDelete(this);
       this._remove();
     });
     this._todoCheckboxEl.addEventListener("change", () => {
