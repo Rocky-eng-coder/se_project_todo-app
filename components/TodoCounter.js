@@ -17,11 +17,17 @@ class TodoCounter {
     this._updateText();
   };
 
-  updateTotal(increment) {
+  updateTotal(increment, isCompleted) {
     if (increment) {
       this._total++;
+      if (isCompleted) {
+        this._completed++;
+      }
     } else {
       this._total--;
+      if (isCompleted) {
+        this._completed--;
+      }
     }
     this._updateText();
   }

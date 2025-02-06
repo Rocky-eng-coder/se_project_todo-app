@@ -37,7 +37,7 @@ const addTodoPopup = new PopupWithForm({
 addTodoPopup.setEventListeners();
 
 const section = new Section({
-  items: [], // pass initial todos-8
+  items: [initialTodos], // pass initial todos-8
   renderer: (todoData) => {
     const todo = generateTodo(todoData);
     todosList.append(todo);
@@ -63,6 +63,7 @@ function handleDelete(completed) {
   if (completed) {
     todoCounter.updateCompleted(false);
   }
+  if (completed) todoCounter.updateTotal(false);
 }
 
 const generateTodo = (data) => {
