@@ -17,14 +17,14 @@ class TodoCounter {
     this._updateText();
   };
 
-  updateTotal = (increment) => {
+  updateTotal(increment) {
     if (increment) {
       this._total++;
     } else {
       this._total--;
     }
     this._updateText();
-  };
+  }
   _updateText(increment) {
     this._element.textContent = `Showing ${this._completed} out of ${this._total} completed`;
   }
