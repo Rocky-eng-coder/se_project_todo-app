@@ -66,11 +66,11 @@ function handleDelete(completed) {
   if (completed) todoCounter.updateTotal(false);
 }
 
-const generateTodo = (data) => {
+function generateTodo(data) {
   const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   const todoElement = todo.getView();
   return todoElement;
-};
+}
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
