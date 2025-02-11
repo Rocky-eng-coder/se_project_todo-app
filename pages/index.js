@@ -37,7 +37,7 @@ const addTodoPopup = new PopupWithForm({
 addTodoPopup.setEventListeners();
 
 const section = new Section({
-  items: [initialTodos], // pass initial todos-8
+  items: initialTodos, // pass initial todos-8
   renderer: (todoData) => {
     const todo = generateTodo(todoData);
     todosList.append(todo);

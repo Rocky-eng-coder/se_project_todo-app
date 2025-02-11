@@ -9,9 +9,9 @@ class TodoCounter {
 
   updateCompleted = (increment) => {
     if (increment) {
-      this._completed++;
+      this._completedTodos++;
     } else {
-      this._completed--;
+      this._completedTodos--;
     }
 
     this._updateText();
@@ -21,18 +21,18 @@ class TodoCounter {
     if (increment) {
       this._total++;
       if (isCompleted) {
-        this._completed++;
+        this._completedTodos++;
       }
     } else {
       this._total--;
       if (isCompleted) {
-        this._completed--;
+        this._completedTodos--;
       }
     }
     this._updateText();
   }
   _updateText(increment) {
-    this._element.textContent = `Showing ${this._completed} out of ${this._total} completed`;
+    this._element.textContent = `Showing ${this._completedTodos} out of ${this._total} completed`;
   }
 }
 
