@@ -28,6 +28,7 @@ const addTodoPopup = new PopupWithForm({
     const id = uuidv4();
     const values = { name, date, id };
     const todo = generateTodo(values);
+    todoCounter.updateTotal(true);
     todosList.append(todo); // use addItem method instead
     addTodoPopup.close();
     //});
@@ -60,10 +61,10 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
+  todoCounter.updateTotal(false);
   if (completed) {
     todoCounter.updateCompleted(false);
   }
-  if (completed) todoCounter.updateTotal(false);
 }
 
 function generateTodo(data) {
