@@ -18,6 +18,11 @@ const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  section.addItem(todo);
+};
+
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (inputvalues) => {
@@ -27,11 +32,8 @@ const addTodoPopup = new PopupWithForm({
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
     const id = uuidv4();
     const values = { name, date, id };
-    const renderTodo = (item) => {
-      const todo = generateTodo(item);
-      section.addItem(todo);
-    };
-    const todo = generateTodo(values);
+
+    renderTodo(values);
     todoCounter.updateTotal(true);
     // use addItem method instead
     addTodoPopup.close();
@@ -44,11 +46,9 @@ addTodoPopup.setEventListeners();
 const section = new Section({
   items: initialTodos, // pass initial todos-8
   renderer: (todoData) => {
-    // generate todo item -8
-    // add it to the todo list -8
-    // (Refer to the forEach loop in this file)-8
+    renderTodo(todoData);
   },
-  containerSelector: "todos__list",
+  containerSelector: ".todos__list",
 });
 
 // call section instance's renderItems method-8
