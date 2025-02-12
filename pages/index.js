@@ -11,7 +11,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopupEl = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 //const todoTemplate = document.querySelector("#todo-template"); -> remove
 const todosList = document.querySelector(".todos__list");
@@ -27,9 +27,13 @@ const addTodoPopup = new PopupWithForm({
     date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
     const id = uuidv4();
     const values = { name, date, id };
+    const renderTodo = (item) => {
+      const todo = generateTodo(item);
+      section.addItem(todo);
+    };
     const todo = generateTodo(values);
     todoCounter.updateTotal(true);
-    todosList.append(todo); // use addItem method instead
+    // use addItem method instead
     addTodoPopup.close();
     //});
   },
@@ -40,8 +44,6 @@ addTodoPopup.setEventListeners();
 const section = new Section({
   items: initialTodos, // pass initial todos-8
   renderer: (todoData) => {
-    const todo = generateTodo(todoData);
-    todosList.append(todo);
     // generate todo item -8
     // add it to the todo list -8
     // (Refer to the forEach loop in this file)-8
@@ -51,10 +53,6 @@ const section = new Section({
 
 // call section instance's renderItems method-8
 section.renderItems();
-
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
 
 function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
